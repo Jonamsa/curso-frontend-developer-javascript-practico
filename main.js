@@ -8,6 +8,9 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const aside = document.querySelector('.product-detail');
 
+const cardsContainer = document.querySelector('.cards-container');
+
+
 
 
 // Desplegar menu del desktop
@@ -53,3 +56,67 @@ function toggleAside(){
 
     aside.classList.toggle('inactive');
 }
+
+const productList = [];
+
+productList.push({
+    name: 'Bike',
+    price: 120,
+    img:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+productList.push({
+    name: 'Computadora',
+    price: 680,
+    img:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+productList.push({
+    name: 'Television',
+    price: 900,
+    img:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+
+function rederProducts (arr){
+    for(product of productList){
+        //con esto declaramos las etiquetas de cada uno de nuestro html y le ponemos las classes que tienen asi como sus atributos
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+    
+    
+        const productImg = document.createElement('img');
+        productImg.setAttribute('src', product.img);
+    
+        const productInfo = document.createElement('div');
+        productInfo.classList.add('product-info');
+    
+        const productInfoDiv = document.createElement('div');
+    
+        const productInfoPrice = document.createElement('p');
+        productInfoPrice.innerText = '$'+ product.price;
+        const productInfoName = document.createElement('p');
+        productInfoName.innerText = product.name;
+    
+        productInfoDiv.appendChild(productInfoPrice, productInfoName);
+    
+        const productInfoFigure = document.createElement('figure');
+        const productImgCart = document.createElement('img');
+        productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
+    
+    
+        //Aca empezamos a vincular las etiquetas con las etiquetas que las contienen
+        productInfoFigure.appendChild(productImgCart);
+    
+        productInfoDiv.appendChild(productInfoPrice);
+        productInfoDiv.appendChild(productInfoName);
+    
+    
+        productInfo.appendChild(productInfoDiv);
+        productInfo.appendChild(productInfoFigure);
+    
+        productCard.appendChild(productImg);
+        productCard.appendChild(productInfo);
+    
+        cardsContainer.appendChild(productCard);
+    }
+}
+
+rederProducts(productList);
