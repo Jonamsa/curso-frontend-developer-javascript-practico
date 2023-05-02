@@ -6,7 +6,7 @@ const menuHamIcon = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 // carrito
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
-const aside = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 
 const cardsContainer = document.querySelector('.cards-container');
 
@@ -17,10 +17,10 @@ const cardsContainer = document.querySelector('.cards-container');
 menuEmail.addEventListener('click', toggleDesktopMenu);
 
 function toggleDesktopMenu (){
-    const isAsideClosed = aside.classList.contains('inactive');//aca preguntamos si la clasee tambien tiene la clase inactive
+    const isAsideClosed = shoppingCartContainer.classList.contains('inactive');//aca preguntamos si la clasee tambien tiene la clase inactive
 
     if (!isAsideClosed){
-    aside.classList.add('inactive');//Si aside(Clase) no contiene tambien la clase inactive se añadira la clase inactive para que pueda abrirse el menuDesktop.
+        shoppingCartContainer.classList.add('inactive');//Si aside(Clase) no contiene tambien la clase inactive se añadira la clase inactive para que pueda abrirse el menuDesktop.
     }
 
     desktopMenu.classList.toggle('inactive');
@@ -30,19 +30,19 @@ function toggleDesktopMenu (){
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 
 function toggleMobileMenu(){
-    const isAsideClosed = aside.classList.contains('inactive');//aca preguntamos si la clasee tambien tiene la clase inactive
+    const isAsideClosed = shoppingCartContainer.classList.contains('inactive');//aca preguntamos si la clasee tambien tiene la clase inactive
 
     if (!isAsideClosed){
-    aside.classList.add('inactive');//Si aside(Clase) no contiene tambien la clase inactive se añadira la clase inactive para que pueda abrirse el mobileDesktop.
+        shoppingCartContainer.classList.add('inactive');//Si aside(Clase) no contiene tambien la clase inactive se añadira la clase inactive para que pueda abrirse el mobileDesktop.
     }
 
     mobileMenu.classList.toggle('inactive');
 }
 
 // Desplegar el carrtio de compras
-menuCarritoIcon.addEventListener('click', toggleAside);
+menuCarritoIcon.addEventListener('click', toggleshoppingCartContainer);
 
-function toggleAside(){
+function toggleshoppingCartContainer(){
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive'); //aca preguntamos si la clasee tambien tiene la clase inactive
     const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');
 
@@ -54,7 +54,7 @@ function toggleAside(){
     mobileMenu.classList.add('inactive'); //Si mobileMenu(Clase) no contiene tambien la clase inactive se añadira la clase inactive para que pueda abrirse el carrito.
     }
 
-    aside.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
 }
 
 const productList = [];
